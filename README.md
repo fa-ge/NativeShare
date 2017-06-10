@@ -7,7 +7,7 @@
 * QQ浏览器
 * UC浏览器
 * android百度浏览器
-* 微信自带浏览器(即将支持)
+* 微信自带浏览器
 * QQ自带浏览器(即将支持)
 
 ### 示例
@@ -32,6 +32,15 @@ try {
 } catch(err) {
   // 如果不支持，你可以在这里做降级处理
 }
+
+// 如果你需要在微信浏览器中分享，那么你需要在最开始setShareData之前调用
+// 特别提示一下微信分享有一个坑，不要分享安全域名以外的域名(具体见jssdk文档)，否则会导致你配置的文案无效
+nativeShare.setWechatConfig({
+      appId: '',
+      timestamp: '',
+      nonceStr: '',
+      signature: '',
+  })
 ```
 
 ### API
@@ -41,6 +50,8 @@ nativeShare一共只有三个实例方法
 * getShareData() 获得分享的文案
 * setShareData() 设置分享的文案
 * callShare(command = 'default', [options]) 调用浏览器原生的分享组件
+
+还有就是针对微信的实例方法 setWechatConfig
 
 setShareData设置文案的格式为
 

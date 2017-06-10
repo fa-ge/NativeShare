@@ -1,3 +1,5 @@
+import { noop } from './utils'
+
 const descTag = document.querySelector('meta[name=description]')
 const iconTag = document.querySelector('link[rel*=icon]')
 let desc = 'from https://github.com/fa-ge/NativeShare'
@@ -15,4 +17,8 @@ export default {
     desc,
     icon,
     from: '',
+    success: noop,
+    fail: noop,
+    cancel: noop,
+    trigger: noop,
 }

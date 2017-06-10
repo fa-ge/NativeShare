@@ -6,7 +6,7 @@
  * ios UC浏览器分享到微博也有问题
  */
 
-import { isQQMBrowser, isUCMBrowser, isWechat, isBAIDUMBrowser, isAndroid, isIos } from './utils'
+import { isQQMBrowser, isUCMBrowser, isWechat, isBAIDUMBrowser, isAndroid, isIos, noop } from './utils'
 import QQMB from './QQMobileBrowser'
 import UCAB from './UCAndroidBrowser'
 import UCIB from './UCIosBrowser'
@@ -31,6 +31,10 @@ if (isWechat) {
 }
 
 share.init()
+
+if (!isWechat) {
+    share.setWechatConfig = noop
+}
 
 window.nativeShare = share
 export default share
