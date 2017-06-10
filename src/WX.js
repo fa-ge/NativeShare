@@ -1,5 +1,5 @@
-import noop from 'lodash/noop'
-import assign from 'lodash/assign'
+import { noop } from './utils'
+import { assign } from './utils'
 import baseShareData from './baseShareData'
 
 const shareData = assign({}, baseShareData)
