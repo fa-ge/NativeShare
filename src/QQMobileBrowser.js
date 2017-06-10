@@ -26,7 +26,7 @@ function setShareData(options = {}) {
 function callShare(command = 'default', options = {}) {
     setShareData(options)
     const toApp = commamdMap[command]
-    window.browser.app.share({
+    browser.app.share({
         title: shareData.title,
         description: shareData.desc,
         url: shareData.link,

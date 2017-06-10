@@ -1,4 +1,4 @@
-const UA = window.navigator.userAgent
+const UA = navigator.userAgent
 
 const isIpad = /(iPad).*OS\s([\d_]+)/.test(UA)
 const isIpod = /(iPod)(.*OS\s([\d_]+))?/.test(UA)

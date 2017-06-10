@@ -22,7 +22,7 @@ function setShareData(options = {}) {
 function callShare(command = 'default', options = {}) {
     setShareData(options)
     const toApp = commamdMap[command]
-    window.ucweb.startRequest('shell.page_share', [
+    ucweb.startRequest('shell.page_share', [
         shareData.desc,
         shareData.title,
         shareData.link,

@@ -13,7 +13,7 @@ function setShareData(options = {}) {
 
 function callShare(command = 'default', options = {}) {
     setShareData(options)
-    window._flyflowNative.exec('bd_utils', 'shareWebPage', JSON.stringify({
+    _flyflowNative.exec('bd_utils', 'shareWebPage', JSON.stringify({
         title: shareData.title,
         content: shareData.desc,
         landurl: shareData.link,
