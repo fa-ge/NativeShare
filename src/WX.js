@@ -1,5 +1,4 @@
-import { noop } from './utils'
-import { assign } from './utils'
+import { noop, assign } from './utils'
 import baseShareData from './baseShareData'
 
 const shareData = assign({}, baseShareData)
