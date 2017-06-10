@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="description" content="nativeShare是一个整合了各大移动端浏览器调用原生分享的插件！！！">
+    <title>NativeShare demo</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <button onclick="call()">通用分享</button>
+        <button onclick="call('appMessage')">微信好友</button>
+        <button onclick="call('timeline')">朋友圈</button>
+        <button onclick="call('qq')">QQ</button>
+        <button onclick="call('qZone')">QQ空间</button>
+        <button onclick="call('weiBo')">微博</button>
+    </div>
+
+
+    <script type="text/javascript" src="https://github.com/fa-ge/nativeShare/nativeShare.js"></script>
+    <script>
+        nativeShare.setShareData({
+            title: 'nativeShare',
+            desc: 'nativeShare是一个整合了各大移动端浏览器调用原生分享的插件',
+            link: 'https://github.com/fa-ge/nativeShare',
+            icon: 'https://pic3.zhimg.com/v2-080267af84aa0e97c66d5f12e311c3d6_xl.jpg'
+        })
+
+        function call(command) {
+            try {
+                nativeShare.callShare(command)
+            } catch (err) {
+                // 如果不支持，你可以在这里做降级处理
+                alert('该浏览器不支持调用原生的分享')
+            }
+        }
+    </script>
+</body>
+
+</html>

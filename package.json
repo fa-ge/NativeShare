@@ -1,0 +1,31 @@
+{
+  "name": "nativeshare",
+  "version": "1.0.0",
+  "description": "nativeShare是一个整合了各大移动端浏览器调用原生分享的插件",
+  "main": "nativeShare.js",
+  "scripts": {
+    "lib": "webpack --env=lib"
+  },
+  "keywords": [
+    "share",
+    "nativeShare",
+    "browser"
+  ],
+  "author": "fa-ge",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "webpack": "^2.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fa-ge/nativeShare.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fa-ge/nativeShare/issues"
+  },
+  "homepage": "https://github.com/fa-ge/nativeShare#readme"
+}
