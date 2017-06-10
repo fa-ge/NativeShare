@@ -2,7 +2,7 @@ import { assign } from './utils'
 import baseShareData from './baseShareData'
 
 const shareData = assign({}, baseShareData)
-// 暂时没找到的命令都用空字符替代
+
 const commamdMap = {
     timeline: 'WechatTimeline',
     appMessage: 'WechatFriends',
