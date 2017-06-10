@@ -1,5 +1,10 @@
 # 移动端调用原生分享的插件
 
+### 示例
+[demo](https://fa-ge.github.io/nativeShare/demo/index.html)
+
+![demo](https://fa-ge.github.io/nativeShare/demo/demo.png)
+
 ### 功能
 整合了QQ浏览器，UC浏览器，安卓百度浏览器，微信。
 
