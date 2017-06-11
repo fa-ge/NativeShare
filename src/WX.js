@@ -8,36 +8,11 @@ function getShareData() {
 }
 
 function setShareData(options = {}) {
-    callShare(undefined, options)
+    assign(shareData, options)
 }
 
 function callShare(command, options = {}) {
-    assign(shareData, options)
-    const wxShareData = {
-        title: shareData.title,
-        desc: shareData.desc,
-        link: shareData.link,
-        imgUrl: shareData.icon,
-        type: shareData.type,
-        dataUrl: shareData.dataUrl,
-        success: shareData.success,
-        cancel: shareData.cancel,
-        fail: shareData.fail,
-        trigger(...args) {
-            assign(wxShareData, shareData)
-            shareData.trigger(...args)
-        },
-    }
-
-    try {
-        wx.ready(() => {
-            wx.onMenuShareAppMessage(wxShareData)
-            wx.onMenuShareQQ(wxShareData)
-            wx.onMenuShareQZone(wxShareData)
-            wx.onMenuShareWeibo(wxShareData)
-            wx.onMenuShareTimeline(wxShareData)
-        })
-    } catch (err) {}
+    setShareData(options)
 }
 
 function init() {}
@@ -45,7 +20,7 @@ function init() {}
 function setWechatConfig(config) {
     loadJs('https://res.wx.qq.com/open/js/jweixin-1.2.0.js', () => {
         wx.config(
-            Object.assign(
+            assign(
                 {
                     debug: false,
                     jsApiList: [
@@ -59,6 +34,29 @@ function setWechatConfig(config) {
                 config
             )
         )
+        const wxShareData = {
+            title: shareData.title,
+            desc: shareData.desc,
+            link: shareData.link,
+            imgUrl: shareData.icon,
+            type: shareData.type,
+            dataUrl: shareData.dataUrl,
+            success: shareData.success,
+            cancel: shareData.cancel,
+            fail: shareData.fail,
+            trigger(...args) {
+                assign(wxShareData, shareData)
+                shareData.trigger(...args)
+            },
+        }
+
+        wx.ready(() => {
+            wx.onMenuShareAppMessage(wxShareData)
+            wx.onMenuShareQQ(wxShareData)
+            wx.onMenuShareQZone(wxShareData)
+            wx.onMenuShareWeibo(wxShareData)
+            wx.onMenuShareTimeline(wxShareData)
+        })
     })
 }
 

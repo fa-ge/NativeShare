@@ -33,15 +33,15 @@
         <button onclick="call('qq')">QQ</button>
         <button onclick="call('qZone')">QQ空间</button>
         <button onclick="call('weiBo')">微博</button>
+        <button onclick="setTitle('fa-ge nativeShare')">设置标题</button>
     </div>
-
 
     <script type="text/javascript" src="https://fa-ge.github.io/nativeShare/nativeShare.js"></script>
     <script>
         nativeShare.setShareData({
             title: 'nativeShare',
             desc: 'nativeShare是一个整合了各大移动端浏览器调用原生分享的插件',
-            link: 'https://github.com/fa-ge/nativeShare',
+            link: 'http://m.dolapocket.com/',
             icon: 'https://pic3.zhimg.com/v2-080267af84aa0e97c66d5f12e311c3d6_xl.jpg'
         })
 
@@ -52,6 +52,12 @@
                 // 如果不支持，你可以在这里做降级处理
                 alert('该浏览器不支持调用原生的分享')
             }
+        }
+
+        function setTitle(title) {
+            nativeShare.setShareData({
+                title: title,
+            })
         }
     </script>
 </body>
