@@ -35,13 +35,14 @@
         <button onclick="call('weiBo')">微博</button>
         <button onclick="setTitle('fa-ge nativeShare')">设置标题</button>
     </div>
-
     <script type="text/javascript" src="https://fa-ge.github.io/nativeShare/nativeShare.js"></script>
+    <script type="text/javascript" src="../nativeShare.js"></script>
     <script>
+        nativeShare.setWechatConfig(signPackage)
         nativeShare.setShareData({
             title: 'nativeShare',
             desc: 'nativeShare是一个整合了各大移动端浏览器调用原生分享的插件',
-            link: 'http://m.dolapocket.com/',
+            link: 'https://github.com/fa-ge/nativeShare',
             icon: 'https://pic3.zhimg.com/v2-080267af84aa0e97c66d5f12e311c3d6_xl.jpg'
         })
 

@@ -27,5 +27,6 @@
   "bugs": {
     "url": "https://github.com/fa-ge/nativeShare/issues"
   },
-  "homepage": "https://github.com/fa-ge/nativeShare#readme"
+  "homepage": "https://github.com/fa-ge/nativeShare#readme",
+  "dependencies": {}
 }

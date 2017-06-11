@@ -1,7 +1,4 @@
-import { assign } from './utils'
-import baseShareData from './baseShareData'
-
-const shareData = assign({}, baseShareData)
+import { setShareData, shareData } from './baseShare'
 
 const commamdMap = {
     timeline: 'kWeixinFriend',
@@ -10,14 +7,6 @@ const commamdMap = {
     weiBo: 'kSinaWeibo',
     qZone: 'kQZone',
     default: undefined,
-}
-
-function getShareData() {
-    return assign({}, shareData)
-}
-
-function setShareData(options = {}) {
-    assign(shareData, options)
 }
 
 function callShare(command = 'default', options = {}) {
@@ -41,4 +30,4 @@ function callShare(command = 'default', options = {}) {
 
 function init() {}
 
-export default { setShareData, getShareData, callShare, init }
+export default { callShare, init }

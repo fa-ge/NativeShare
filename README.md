@@ -20,20 +20,8 @@
 如果你的项目没有模块化。你也可以直接用script标签引入NativeShare.js。可以参考[demo](https://fa-ge.github.io/nativeShare/demo/index.html)
 ```javascript
 import nativeShare from 'nativeshare'
-nativeShare.setShareData({
-    icon: 'https://pic3.zhimg.com/v2-080267af84aa0e97c66d5f12e311c3d6_xl.jpg',
-    link: 'https://github.com/fa-ge/nativeShare',
-    title: 'nativeShare',
-    desc: 'nativeShare是一个整合了各大移动端浏览器调用原生分享的插件',
-    from: '@fa-ge',
-})
-try {
-	nativeShare.callShare()
-} catch(err) {
-  // 如果不支持，你可以在这里做降级处理
-}
 
-// 如果你需要在微信浏览器中分享，那么你需要在最开始setShareData之前调用
+// 如果你需要在微信浏览器中分享，那么你需要在最开始setShareData之前调用,不需要在微信中分享不需要调用setWechatConfig
 // 特别提示一下微信分享有一个坑，不要分享安全域名以外的域名(具体见jssdk文档)，否则会导致你配置的文案无效
 nativeShare.setWechatConfig({
       appId: '',
@@ -41,6 +29,22 @@ nativeShare.setWechatConfig({
       nonceStr: '',
       signature: '',
   })
+
+// 设置分享文案
+nativeShare.setShareData({
+    icon: 'https://pic3.zhimg.com/v2-080267af84aa0e97c66d5f12e311c3d6_xl.jpg',
+    link: 'https://github.com/fa-ge/nativeShare',
+    title: 'nativeShare',
+    desc: 'nativeShare是一个整合了各大移动端浏览器调用原生分享的插件',
+    from: '@fa-ge',
+})
+
+// 唤起浏览器原生分享组件(如果在微信中不会唤起，此时callShare方法只会设置文案。类似setShareData)
+try {
+	nativeShare.callShare()
+} catch(err) {
+  // 如果不支持，你可以在这里做降级处理
+}
 ```
 
 ### API

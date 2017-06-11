@@ -7,6 +7,7 @@
  */
 
 import { isQQMBrowser, isUCMBrowser, isWechat, isBAIDUMBrowser, isAndroid, isIos, noop } from './utils'
+import { getShareData, setShareData } from './baseShare'
 import QQMB from './QQMobileBrowser'
 import UCAB from './UCAndroidBrowser'
 import UCIB from './UCIosBrowser'
@@ -14,27 +15,29 @@ import BAIDUAB from './BAIDUAndroidBrowser'
 import WX from './WX'
 import Others from './Others'
 
-let share = {}
+let nativeShare = {}
 
 if (isWechat) {
-    share = WX
+    nativeShare = WX
 } else if (isQQMBrowser) {
-    share = QQMB
+    nativeShare = QQMB
 } else if (isUCMBrowser && isAndroid) {
-    share = UCAB
+    nativeShare = UCAB
 } else if (isUCMBrowser && isIos) {
-    share = UCIB
+    nativeShare = UCIB
 } else if (isBAIDUMBrowser && isAndroid) {
-    share = BAIDUAB
+    nativeShare = BAIDUAB
 } else {
-    share = Others
+    nativeShare = Others
 }
 
-share.init()
+nativeShare.init()
 
 if (!isWechat) {
-    share.setWechatConfig = noop
+    nativeShare.setWechatConfig = noop
 }
+nativeShare.getShareData = getShareData
+nativeShare.setShareData = setShareData
 
-window.nativeShare = share
-export default share
+window.nativeShare = nativeShare
+export default nativeShare

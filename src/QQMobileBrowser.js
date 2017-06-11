@@ -1,7 +1,5 @@
-import { assign, loadJs } from './utils'
-import baseShareData from './baseShareData'
-
-const shareData = assign({}, baseShareData)
+import { loadJs } from './utils'
+import { setShareData, shareData } from './baseShare'
 
 const commamdMap = {
     timeline: 8,
@@ -13,14 +11,6 @@ const commamdMap = {
     more: 5,
     generateQRCode: 7,
     defualt: undefined,
-}
-
-function getShareData() {
-    return assign({}, shareData)
-}
-
-function setShareData(options = {}) {
-    assign(shareData, options)
 }
 
 function callShare(command = 'default', options = {}) {
@@ -40,4 +30,4 @@ function init() {
     loadJs('https://jsapi.qq.com/get?api=app.share')
 }
 
-export default { setShareData, getShareData, callShare, init }
+export default { callShare, init }

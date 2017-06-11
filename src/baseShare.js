@@ -1,4 +1,4 @@
-import { noop } from './utils'
+import { noop, assign } from './utils'
 
 const descTag = document.querySelector('meta[name=description]')
 const iconTag = document.querySelector('link[rel*=icon]')
@@ -11,7 +11,7 @@ if (iconTag) {
     icon = iconTag.getAttribute('href')
 }
 
-export default {
+const shareData = {
     link: location.href,
     title: document.title,
     desc,
@@ -22,3 +22,13 @@ export default {
     cancel: noop,
     trigger: noop,
 }
+
+function getShareData() {
+    return assign({}, shareData)
+}
+
+function setShareData(options = {}) {
+    assign(shareData, options)
+}
+
+export { shareData, getShareData, setShareData }

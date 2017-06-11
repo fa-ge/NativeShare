@@ -1,15 +1,5 @@
 import { assign, loadJs } from './utils'
-import baseShareData from './baseShareData'
-
-const shareData = assign({}, baseShareData)
-
-function getShareData() {
-    return assign({}, shareData)
-}
-
-function setShareData(options = {}) {
-    assign(shareData, options)
-}
+import { setShareData, shareData } from './baseShare'
 
 function callShare(command, options = {}) {
     setShareData(options)
@@ -44,11 +34,19 @@ function setWechatConfig(config) {
             success: shareData.success,
             cancel: shareData.cancel,
             fail: shareData.fail,
-            trigger(...args) {
-                assign(wxShareData, shareData)
-                shareData.trigger(...args)
-            },
         }
+
+        Object.defineProperty(wxShareData, 'trigger', {
+            get() {
+                return (...args) => {
+                    shareData.trigger(...args)
+                    assign(wxShareData, shareData)
+                }
+            },
+            set(newValue) {
+                shareData.trigger = newValue
+            },
+        })
 
         wx.ready(() => {
             wx.onMenuShareAppMessage(wxShareData)
@@ -60,4 +58,4 @@ function setWechatConfig(config) {
     })
 }
 
-export default { setShareData, getShareData, callShare, init, setWechatConfig }
+export default { callShare, init, setWechatConfig }

@@ -1,21 +1,10 @@
-import { assign } from './utils'
-import baseShareData from './baseShareData'
+import { setShareData, shareData } from './baseShare'
 
-const shareData = assign({}, baseShareData)
-
-function getShareData() {
-    return assign({}, shareData)
-}
-
-function setShareData(options = {}) {
-    assign(shareData, options)
-}
-
-function callShare(command = 'default', options = {}) {
+function callShare(command, options = {}) {
     setShareData(options)
     throw new Error('the browser do not support share!')
 }
 
 function init() {}
 
-export default { setShareData, getShareData, callShare, init }
+export default { callShare, init }
