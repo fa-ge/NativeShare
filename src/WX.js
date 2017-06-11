@@ -46,6 +46,7 @@ function setWechatConfig(config) {
             set(newValue) {
                 shareData.trigger = newValue
             },
+            enumerable: true,
         })
 
         wx.ready(() => {

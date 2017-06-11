@@ -1,14 +1,26 @@
-# 移动端调用原生分享的插件
+原文地址 [https://github.com/fa-ge/nativeShare/blob/master/README.md](https://github.com/fa-ge/nativeShare/blob/master/README.md)
 
-### 功能
-在移动端浏览器直接调用浏览器自带的分享组件
+### 起因
+
+最近有一个活动页需要在移动端浏览器分享网页到微信，QQ。虽然每一个浏览器都有分享到微信的能力，但不是每个都提供接口供网页来调用。及时有提供，浏览器暴露出的api也各不相同，而我写[nativeShare](https://github.com/fa-ge/nativeShare)的目的只是为前端开发者提供一致的api来调用浏览器的原生分享组件。
+
+
 
 ### 兼容性
-* QQ浏览器
-* UC浏览器
-* android百度浏览器
-* 微信自带浏览器
-* QQ自带浏览器(即将支持)
+
+- QQ浏览器
+- UC浏览器
+- android百度浏览器
+- 微信自带浏览器
+- QQ自带浏览器(即将支持)
+
+存在的问题
+
+* UC浏览器安卓端不能设置icon
+* 百度浏览器安卓端不能指定分享
+* ios UC浏览器分享到微博有问题
+
+
 
 ### 示例
 [demo](https://fa-ge.github.io/nativeShare/demo/index.html)
@@ -22,7 +34,7 @@
 import nativeShare from 'nativeshare'
 
 // 如果你需要在微信浏览器中分享，那么你需要在最开始setShareData之前调用,不需要在微信中分享不需要调用setWechatConfig
-// 特别提示一下微信分享有一个坑，不要分享安全域名以外的域名(具体见jssdk文档)，否则会导致你配置的文案无效
+// 特别提示一下微信分享有一个坑，不要分享安全域名以外的链接(具体见jssdk文档)，否则会导致你配置的文案无效
 nativeShare.setWechatConfig({
       appId: '',
       timestamp: '',
@@ -55,7 +67,7 @@ nativeShare一共只有三个实例方法
 * setShareData() 设置分享的文案
 * callShare(command = 'default', [options]) 调用浏览器原生的分享组件
 
-还有就是针对微信的实例方法 setWechatConfig
+还有就是针对微信的实例方法 setWechatConfig。
 
 setShareData设置文案的格式为
 
@@ -66,6 +78,11 @@ setShareData设置文案的格式为
     title: '',
     desc: '',
     from: '',
+    // 以下几个回调目前只有在微信中支持
+    success: noop,
+    fail: noop,
+    cancel: noop,
+    trigger: noop,
 }
 ```
 
@@ -82,4 +99,4 @@ setShareData设置文案的格式为
 
 
 ### 交流
-如果你知道其他浏览器调用分享的方式，请务必一定要告诉我。
+如果你是浏览器开发者或者你知道其他浏览器调用分享的方式，请务必一定要告诉我。
