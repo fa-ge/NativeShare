@@ -2,7 +2,6 @@
  * 目前存在的问题
  * UC浏览器安卓端不能设置icon
  * 百度浏览器安卓端不能指定分享
- * ios UC浏览器分享到微博也有问题
  */
 
 import { isQQMBrowser, isUCMBrowser, isWechat, isBaiduMBrowser, isAndroid, isIos, isQQ, isQZone } from './utils'
