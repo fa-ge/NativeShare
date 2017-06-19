@@ -1,21 +1,24 @@
-import { setShareData, shareData } from './baseShare'
+import Share from './Share'
 
-function callShare(command = 'default', options = {}) {
-    setShareData(options)
-    _flyflowNative.exec(
-        'bd_utils',
-        'shareWebPage',
-        JSON.stringify({
-            title: shareData.title,
-            content: shareData.desc,
-            landurl: shareData.link,
-            imageurl: shareData.icon,
-            shareSource: shareData.from,
-        }),
-        ''
-    )
+export default class BaiduAndroidBrowser extends Share {
+    constructor(config) {
+        super(config)
+    }
+
+    call(command, options = {}) {
+        this.setShareData(options)
+        const shareData = this.getShareData()
+        _flyflowNative.exec(
+            'bd_utils',
+            'shareWebPage',
+            JSON.stringify({
+                title: shareData.title,
+                content: shareData.desc,
+                landurl: shareData.link,
+                imageurl: shareData.icon,
+                shareSource: shareData.from,
+            }),
+            ''
+        )
+    }
 }
-
-function init() {}
-
-export default { callShare, init }

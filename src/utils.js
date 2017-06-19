@@ -6,9 +6,11 @@ const isIphone = !isIpad && /(iPhone\sOS)\s([\d_]+)/.test(UA)
 const isIos = isIpad || isIpod || isIphone
 const isAndroid = /(Android);?[\s\/]+([\d.]+)?/.test(UA)
 const isWechat = /micromessenger/i.test(UA)
-const isQQMBrowser = /MQQBrowser/i.test(UA) && !isWechat
+const isQQ = /QQ\/([\d\.]+)/.test(UA)
+const isQZone = /Qzone\//.test(UA)
+const isQQMBrowser = /MQQBrowser/i.test(UA) && !isWechat && !isQQ
 const isUCMBrowser = /UCBrowser/i.test(UA)
-const isBAIDUMBrowser = /mobile.*baidubrowser/i.test(UA)
+const isBaiduMBrowser = /mobile.*baidubrowser/i.test(UA)
 
 function noop() {}
 
@@ -42,4 +44,79 @@ function assign(target, varArgs) {
     return to
 }
 
-export { isWechat, isIos, isAndroid, isQQMBrowser, isUCMBrowser, isBAIDUMBrowser, loadJs, noop, assign }
+function openAppByScheme(scheme) {
+    if (isIos) {
+        location.href = scheme
+    } else {
+        var iframe = document.createElement('iframe')
+        iframe.style.display = 'none'
+        iframe.src = scheme
+        document.body.appendChild(iframe)
+        setTimeout(function() {
+            iframe && iframe.parentNode && iframe.parentNode.removeChild(iframe)
+        }, 2000)
+    }
+}
+
+function generateQueryString(queryObj) {
+    const arr = []
+    for (let key in queryObj) {
+        arr.push(`${key}=${queryObj[key]}`)
+    }
+    return arr.join('&')
+}
+
+const Base64 = {
+    _keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
+    encode: function(a) {
+        var b,
+            c,
+            d,
+            e,
+            f,
+            g,
+            h,
+            i = '',
+            j = 0
+        for (a = Base64._utf8_encode(a); j < a.length; )
+            (b = a.charCodeAt(j++)), (c = a.charCodeAt(j++)), (d = a.charCodeAt(j++)), (e = b >> 2), (f =
+                ((3 & b) << 4) | (c >> 4)), (g = ((15 & c) << 2) | (d >> 6)), (h = 63 & d), isNaN(c)
+                ? (g = h = 64)
+                : isNaN(d) && (h = 64), (i =
+                i + this._keyStr.charAt(e) + this._keyStr.charAt(f) + this._keyStr.charAt(g) + this._keyStr.charAt(h))
+        return i
+    },
+    _utf8_encode: function(a) {
+        a = a.replace(/\r\n/g, '\n')
+        for (var b = '', c = 0; c < a.length; c++) {
+            var d = a.charCodeAt(c)
+            d < 128
+                ? (b += String.fromCharCode(d))
+                : d > 127 && d < 2048
+                  ? ((b += String.fromCharCode((d >> 6) | 192)), (b += String.fromCharCode((63 & d) | 128)))
+                  : (
+                        (b += String.fromCharCode((d >> 12) | 224)),
+                        (b += String.fromCharCode(((d >> 6) & 63) | 128)),
+                        (b += String.fromCharCode((63 & d) | 128))
+                    )
+        }
+        return b
+    },
+}
+
+export {
+    isWechat,
+    isQQ,
+    isQZone,
+    isIos,
+    isAndroid,
+    isQQMBrowser,
+    isUCMBrowser,
+    isBaiduMBrowser,
+    loadJs,
+    noop,
+    assign,
+    openAppByScheme,
+    generateQueryString,
+    Base64,
+}

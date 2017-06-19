@@ -1,10 +1,22 @@
-import { setShareData, shareData } from './baseShare'
+import { shareToQQ, shareToQZone } from './specifyShare'
+import { qqFriend, qZone } from './command'
+import Share from './Share'
 
-function callShare(command, options = {}) {
-    setShareData(options)
-    throw new Error('the browser do not support share!')
+export default class Others extends Share {
+    constructor(config) {
+        super(config)
+    }
+
+    call(command = 'default', options = {}) {
+        command = String(command).toLowerCase()
+        this.setShareData(options)
+        const shareData = this.getShareData()
+        if (command === qqFriend) {
+            shareToQQ(shareData)
+        } else if (command === qZone) {
+            shareToQZone(shareData)
+        }
+
+        throw new Error(`the browser may not support command ${command}!`)
+    }
 }
-
-function init() {}
-
-export default { callShare, init }

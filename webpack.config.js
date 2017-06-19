@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        nativeShare: './src/index.js',
+        NativeShare: './src/index.js',
     },
     output: {
         path: path.resolve(__dirname, './'),

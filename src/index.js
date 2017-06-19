@@ -1,43 +1,40 @@
 /**
  * 目前存在的问题
  * UC浏览器安卓端不能设置icon
- * 百度浏览器ios端分享到QQ，QQ空间失败，分享到微信的链接是百度浏览器的下载链接(暂时直接砍掉这块)
- * 百度浏览器安卓端正常，但是不能指定分享
+ * 百度浏览器安卓端不能指定分享
  * ios UC浏览器分享到微博也有问题
  */
 
-import { isQQMBrowser, isUCMBrowser, isWechat, isBAIDUMBrowser, isAndroid, isIos, noop } from './utils'
-import { getShareData, setShareData } from './baseShare'
-import QQMB from './QQMobileBrowser'
-import UCAB from './UCAndroidBrowser'
-import UCIB from './UCIosBrowser'
-import BAIDUAB from './BAIDUAndroidBrowser'
-import WX from './WX'
+import { isQQMBrowser, isUCMBrowser, isWechat, isBaiduMBrowser, isAndroid, isIos, isQQ, isQZone } from './utils'
+import Share from './Share'
+import QQMobileBrowser from './QQMobileBrowser'
+import UCIosBrowser from './UCIosBrowser'
+import UCAndroidBrowser from './UCAndroidBrowser'
+import BaiduAndroidBrowser from './BaiduAndroidBrowser'
+import Wechat from './Wechat'
 import Others from './Others'
+import QQ from './QQ'
+import QZone from './QZone'
 
-let nativeShare = {}
+let NativeShare
 
 if (isWechat) {
-    nativeShare = WX
+    NativeShare = Wechat
+} else if (isQQ) {
+    NativeShare = QQ
+} else if (isQZone) {
+    NativeShare = QZone
 } else if (isQQMBrowser) {
-    nativeShare = QQMB
-} else if (isUCMBrowser && isAndroid) {
-    nativeShare = UCAB
+    NativeShare = QQMobileBrowser
 } else if (isUCMBrowser && isIos) {
-    nativeShare = UCIB
-} else if (isBAIDUMBrowser && isAndroid) {
-    nativeShare = BAIDUAB
+    NativeShare = UCIosBrowser
+} else if (isUCMBrowser && isAndroid) {
+    NativeShare = UCAndroidBrowser
+} else if (isBaiduMBrowser && isAndroid) {
+    NativeShare = BaiduAndroidBrowser
 } else {
-    nativeShare = Others
+    NativeShare = Others
 }
 
-nativeShare.init()
-
-if (!isWechat) {
-    nativeShare.setWechatConfig = noop
-}
-nativeShare.getShareData = getShareData
-nativeShare.setShareData = setShareData
-
-window.nativeShare = nativeShare
-export default nativeShare
+window.NativeShare = NativeShare
+export default NativeShare
