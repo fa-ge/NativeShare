@@ -1,4 +1,4 @@
-import { wechatTimeline, wechatFriend, qqFriend, qZone, weibo, defualt } from './command'
+import { wechatTimeline, wechatFriend, qqFriend, qZone, weibo, defaultCommand } from './command'
 import Share from './Share'
 
 export default class UCIosBrowser extends Share {
@@ -8,7 +8,7 @@ export default class UCIosBrowser extends Share {
         [qqFriend]: 'kQQ',
         [qZone]: 'kQZone',
         [weibo]: 'kSinaWeibo',
-        [defualt]: undefined,
+        [defaultCommand]: undefined,
     }
 
     constructor(config) {

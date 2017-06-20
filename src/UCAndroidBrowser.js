@@ -1,4 +1,4 @@
-import { wechatTimeline, wechatFriend, qqFriend, qZone, weibo, defualt } from './command'
+import { wechatTimeline, wechatFriend, qqFriend, qZone, weibo, defaultCommand } from './command'
 import Share from './Share'
 
 export default class UCAndroidBrowser extends Share {
@@ -8,7 +8,7 @@ export default class UCAndroidBrowser extends Share {
         [qqFriend]: 'QQ',
         [qZone]: 'Qzone',
         [weibo]: 'SinaWeibo',
-        [defualt]: '',
+        [defaultCommand]: '',
     }
 
     constructor(config) {

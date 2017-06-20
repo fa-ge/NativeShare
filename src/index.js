@@ -19,7 +19,7 @@ let NativeShare
 
 if (isWechat) {
     NativeShare = Wechat
-} else if (isQQ) {
+} else if (isQQ && isIos) {
     NativeShare = QQ
 } else if (isQZone) {
     NativeShare = QZone

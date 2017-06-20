@@ -1,5 +1,5 @@
 import { loadJs, openAppByScheme, generateQueryString, Base64, isIos } from './utils'
-import { wechatTimeline, wechatFriend, qqFriend, qZone, weibo, copyUrl, more, generateQRCode, defualt } from './command'
+import { wechatTimeline, wechatFriend, qqFriend, qZone, weibo, copyUrl, more, generateQRCode, defaultCommand } from './command'
 import Share from './Share'
 
 export default class QQMobileBrowser extends Share {
@@ -12,7 +12,7 @@ export default class QQMobileBrowser extends Share {
         [copyUrl]: 10,
         [more]: 5,
         [generateQRCode]: 7,
-        [defualt]: undefined,
+        [defaultCommand]: undefined,
     }
 
     constructor(config) {
