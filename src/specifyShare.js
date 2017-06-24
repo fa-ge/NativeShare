@@ -12,10 +12,10 @@ function generateQQQueryString(shareData) {
 }
 
 function shareToQQ(shareData) {
-     const shareScheme = isIos
+    const shareScheme = isIos
         ? 'mqqapi://share/to_fri?src_type=web&version=1&file_type=news'
         : 'mqqapi://share/to_fri?src_type=isqqBrowser&version=1&file_type=news'
-    openAppByScheme(`${shareScheme}&${generateQQQueryString(shareData)}`)   
+    openAppByScheme(`${shareScheme}&${generateQQQueryString(shareData)}`)
 }
 
 function shareToQZone(shareData) {
@@ -25,5 +25,23 @@ function shareToQZone(shareData) {
     openAppByScheme(`${shareScheme}&${generateQQQueryString(shareData)}`)
 }
 
+function shareToQZone4Web({ link, title, icon, desc }) {
+    const queryObj = {
+        url: link,
+        title: title,
+        pic: icon,
+        desc: desc,
+    }
+    location.href = `http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?${generateQueryString(queryObj, true)}`
+}
 
-export { shareToQQ, shareToQZone }
+function shareToWeibo4Web({ link, title, icon }) {
+    const queryObj = {
+        url: link,
+        title: title,
+        pic: icon,
+    }
+    location.href = `http://service.weibo.com/share/share.php?${generateQueryString(queryObj, true)}`
+}
+
+export { shareToQQ, shareToQZone, shareToWeibo4Web, shareToQZone4Web }

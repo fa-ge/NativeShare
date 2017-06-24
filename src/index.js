@@ -4,6 +4,7 @@
  * 百度浏览器安卓端不能指定分享
  */
 
+import {shareToQQ, shareToQZone, shareToWeibo4Web, shareToQZone4Web} from './specifyShare'
 import { isQQMBrowser, isUCMBrowser, isWechat, isBaiduMBrowser, isAndroid, isIos, isQQ, isQZone } from './utils'
 import Share from './Share'
 import QQMobileBrowser from './QQMobileBrowser'

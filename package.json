@@ -1,6 +1,6 @@
 {
   "name": "nativeshare",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "NativeShare是一个整合了各大移动端浏览器调用原生分享的插件",
   "main": "NativeShare.js",
   "scripts": {

@@ -58,10 +58,14 @@ function openAppByScheme(scheme) {
     }
 }
 
-function generateQueryString(queryObj) {
+function generateQueryString(queryObj, needEncode = false) {
     const arr = []
     for (let key in queryObj) {
-        arr.push(`${key}=${queryObj[key]}`)
+        if (needEncode) {
+            arr.push(`${key}=${encodeURIComponent(queryObj[key])}`)
+        } else {
+            arr.push(`${key}=${queryObj[key]}`)
+        }
     }
     return arr.join('&')
 }
