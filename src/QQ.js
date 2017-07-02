@@ -9,9 +9,6 @@ export default class QQ extends Share {
 
     call(command = 'default', options = {}) {
         this.setShareData(options)
-        if (this.hasSomethingWrong) {
-            throw new Error(`the browser may not support share!`)
-        }
     }
 
     init() {
@@ -33,7 +30,6 @@ export default class QQ extends Share {
                         } else if (retCode === 1) {
                             shareData.cancel.call(this)
                         } else {
-                            this.hasSomethingWrong = true
                             shareData.fail.call(this)
                         }
                     }
