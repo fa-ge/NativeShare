@@ -44,10 +44,12 @@ var nativeShare = new NativeShare()
 // 特别提示一下微信分享有一个坑，不要分享安全域名以外的链接(具体见jssdk文档)，否则会导致你配置的文案无效
 // 创建实例应该带参数
 var nativeShare = new NativeShare({
-  appId: '',
-  timestamp: '',
-  nonceStr: '',
-  signature: '',
+    wechatConfig: {
+        appId: '',
+        timestamp: '',
+        nonceStr: '',
+        signature: '',
+    }
 })
 
 // 设置分享文案
