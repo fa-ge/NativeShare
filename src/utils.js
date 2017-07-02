@@ -11,6 +11,7 @@ const isQZone = /Qzone\//.test(UA)
 const isQQMBrowser = /MQQBrowser/i.test(UA) && !isWechat && !isQQ
 const isUCMBrowser = /UCBrowser/i.test(UA)
 const isBaiduMBrowser = /mobile.*baidubrowser/i.test(UA)
+const isSogouMBrowser = /SogouMobileBrowser/i.test(UA)
 
 function noop() {}
 
@@ -117,6 +118,7 @@ export {
     isQQMBrowser,
     isUCMBrowser,
     isBaiduMBrowser,
+    isSogouMBrowser,
     loadJs,
     noop,
     assign,

@@ -1,16 +1,21 @@
-/**
- * 目前存在的问题
- * UC浏览器安卓端不能设置icon
- * 百度浏览器安卓端不能指定分享
- */
-
-import {shareToQQ, shareToQZone, shareToWeibo4Web, shareToQZone4Web} from './specifyShare'
-import { isQQMBrowser, isUCMBrowser, isWechat, isBaiduMBrowser, isAndroid, isIos, isQQ, isQZone } from './utils'
+import { shareToQQ, shareToQZone, shareToWeibo4Web, shareToQZone4Web } from './specifyShare'
+import {
+    isQQMBrowser,
+    isUCMBrowser,
+    isWechat,
+    isBaiduMBrowser,
+    isAndroid,
+    isIos,
+    isQQ,
+    isQZone,
+    isSogouMBrowser,
+} from './utils'
 import Share from './Share'
 import QQMobileBrowser from './QQMobileBrowser'
 import UCIosBrowser from './UCIosBrowser'
 import UCAndroidBrowser from './UCAndroidBrowser'
 import BaiduAndroidBrowser from './BaiduAndroidBrowser'
+import SogouIosBrowser from './SogouIosBrowser'
 import Wechat from './Wechat'
 import Others from './Others'
 import QQ from './QQ'
@@ -32,6 +37,8 @@ if (isWechat) {
     NativeShare = UCAndroidBrowser
 } else if (isBaiduMBrowser && isAndroid) {
     NativeShare = BaiduAndroidBrowser
+} else if (isSogouMBrowser && isIos) {
+    NativeShare = SogouIosBrowser
 } else {
     NativeShare = Others
 }
