@@ -24,6 +24,7 @@ export default class QQ extends Share {
                         desc: shareData.desc,
                         share_url: shareData.link,
                         image_url: shareData.icon,
+                        sourceName: shareData.from,
                     },
                     function({ retCode }) {
                         if (retCode === 0) {
