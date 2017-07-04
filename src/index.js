@@ -18,7 +18,8 @@ import BaiduAndroidBrowser from './BaiduAndroidBrowser'
 import SogouIosBrowser from './SogouIosBrowser'
 import Wechat from './Wechat'
 import Others from './Others'
-import QQ from './QQ'
+import QQIos from './QQIos'
+import QQAndroid from './QQAndroid'
 import QZone from './QZone'
 
 let NativeShare
@@ -26,7 +27,9 @@ let NativeShare
 if (isWechat) {
     NativeShare = Wechat
 } else if (isQQ && isIos) {
-    NativeShare = QQ
+    NativeShare = QQIos
+} else if (isQQ && QQAndroid) {
+    NativeShare = QQAndroid
 } else if (isQZone) {
     NativeShare = QZone
 } else if (isQQMBrowser) {

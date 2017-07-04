@@ -37,7 +37,7 @@ export default class QQ extends Share {
         )
     }
 
-    setShareData(options = {}) {
+    setShareData(options) {
         try {
             this.call('default', options)
         } catch (err) {}

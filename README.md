@@ -12,17 +12,17 @@
 - QQ浏览器
 - UC浏览器
 - 微信自带浏览器(只能设置文案，分享需要用户手动点击右上角)
-- ios QQ自带浏览器
+- QQ自带浏览器
 - QQ空间APP(只能设置文案，分享需要用户手动点击右上角)
 - android百度浏览器
 - ios 搜狗浏览器
 - 支持分享到web微博
-- 即将支持(安卓QQ自带浏览器，android 搜狗浏览器）
+- 即将支持(android 搜狗浏览器）
 
 存在的问题
 
 * 虽然几乎所有的浏览器都支持分享到QQ和QQ空间，但是webview中基本都会不支持。我也很难判断当前浏览器是否支持，浏览器是否唤起QQ APP我也很难判断，所有除了上述支持的浏览器，APP外其他情况调用分享到QQ我也会抛出异常。
-* 安卓的QQ自带浏览器分享有问题
+* 安卓的QQ自带浏览器分享url必须跟页面url同一个域名，否则所有设置不生效。
 * UC浏览器安卓端不能设置icon
 * 百度浏览器安卓端不能指定分享
 
@@ -53,6 +53,16 @@ var nativeShare = new NativeShare({
     }
 })
 
+// 你也可以在setConfig方法中设置配置参数
+nativeShare.setConfig({
+    wechatConfig: {
+        appId: '',
+        timestamp: '',
+        nonceStr: '',
+        signature: '',
+    }
+})
+
 // 设置分享文案
 nativeShare.setShareData({
     icon: 'https://pic3.zhimg.com/v2-080267af84aa0e97c66d5f12e311c3d6_xl.jpg',
@@ -74,11 +84,13 @@ try {
 
 ### API
 
-NativeShare一共只有三个实例方法
+NativeShare一共只有五个实例方法
 
 * getShareData() 获得分享的文案
 * setShareData() 设置分享的文案
 * call(command = 'default', [options]) 调用浏览器原生的分享组件
+* setConfig() 设置配置参数和new NativeShare()中设置的一样
+* getConfig() 获得配置参数
 
 ```javascript
 {

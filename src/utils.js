@@ -109,6 +109,12 @@ const Base64 = {
     },
 }
 
+function getHostnameFromUrl(url) {
+    const a = document.createElement('a')
+    a.href = url
+    return a.hostname
+}
+
 export {
     isWechat,
     isQQ,
@@ -125,4 +131,5 @@ export {
     openAppByScheme,
     generateQueryString,
     Base64,
+    getHostnameFromUrl,
 }
