@@ -7,7 +7,7 @@ export default class QQ extends Share {
         this.init()
     }
 
-    call(command = 'default', options = {}) {
+    call(command = 'default', options) {
         this.setShareData(options)
         mqq.ui.showShareMenu()
     }

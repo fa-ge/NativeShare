@@ -7,8 +7,9 @@ export default class QQ extends Share {
         this.init()
     }
 
-    call(command = 'default', options = {}) {
-        assign(this._shareData, options)
+    call(command = 'default', options) {
+        this.setShareData(options)
+        
         const shareData = this.getShareData()
         const imageArr = [],
             titleArr = [],

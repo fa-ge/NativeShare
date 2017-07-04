@@ -20,7 +20,7 @@ export default class QQMobileBrowser extends Share {
         loadJs('https://jsapi.qq.com/get?api=app.share')
     }
 
-    call(command = 'default', options = {}) {
+    call(command = 'default', options) {
         this.setShareData(options)
         const shareData = this.getShareData()
         const toApp = this.constructor.commamdMap[String(command).toLowerCase()]

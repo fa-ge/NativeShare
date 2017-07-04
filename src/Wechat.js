@@ -4,14 +4,22 @@ import Share from './Share'
 export default class Wechat extends Share {
     constructor(config) {
         super(config)
-        this.init(Object(config).wechatConfig)
+        this.setConfig(config)
     }
 
-    call(command, options = {}) {
+    call(command, options) {
         this.setShareData(options)
     }
 
+    setConfig(config) {
+        super.setConfig(config)
+        this.init(this.getConfig().wechatConfig)
+    }
+
     init(config) {
+        if (!config) {
+            return
+        }
         loadJs('https://res.wx.qq.com/open/js/jweixin-1.2.0.js', () => {
             wx.config(
                 assign(
@@ -64,4 +72,5 @@ export default class Wechat extends Share {
             })
         })
     }
+
 }

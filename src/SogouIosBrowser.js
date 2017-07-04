@@ -5,7 +5,7 @@ export default class SogouIosBrowser extends Share {
         super(config)
     }
 
-    call(command, options = {}) {
+    call(command, options) {
         this.setShareData(options)
         const shareData = this.getShareData()
         SogouMse.Utility.shareWithInfo({

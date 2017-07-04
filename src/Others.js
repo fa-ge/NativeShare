@@ -7,10 +7,11 @@ export default class Others extends Share {
         super(config)
     }
 
-    call(command = 'default', options = {}) {
-        command = String(command).toLowerCase()
+    call(command = 'default', options) {
         this.setShareData(options)
         const shareData = this.getShareData()
+        
+        command = String(command).toLowerCase()
 
         if (command === weibo) {
             shareToWeibo4Web(shareData)

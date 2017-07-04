@@ -15,7 +15,7 @@ export default class UCAndroidBrowser extends Share {
         super(config)
     }
 
-    call(command = 'default', options = {}) {
+    call(command = 'default', options) {
         this.setShareData(options)
         const shareData = this.getShareData()
         const toApp = this.constructor.commamdMap[String(command).toLowerCase()]

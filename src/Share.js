@@ -2,8 +2,9 @@ import { noop, assign, openAppByScheme, generateQueryString, Base64, isIos } fro
 
 export default class Share {
     _shareData = null
-
+    _config = {}
     constructor(config) {
+        this.setConfig(config)
         this.initShareData()
     }
 
@@ -39,4 +40,13 @@ export default class Share {
     setShareData(options = {}) {
         assign(this._shareData, options)
     }
+
+    setConfig(config = {}) {
+        assign(this._config, config)
+    }
+
+    getConfig() {
+        return assign({}, this._config)
+    }
+
 }
