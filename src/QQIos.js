@@ -1,7 +1,7 @@
 import { loadJs } from './utils'
 import Share from './Share'
 
-export default class QQ extends Share {
+export default class QQIos extends Share {
     constructor(config) {
         super(config)
         this.init()
