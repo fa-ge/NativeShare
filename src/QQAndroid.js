@@ -22,9 +22,9 @@ export default class QQAndroid extends Share {
                     desc: shareData.desc,
                     image_url: shareData.icon,
                 },
-                success => {
-                    if (!success) {
-                        console.warn('文案设置出错')
+                data => {
+                    if (data !== true) {
+                        console.warn(data)
                     }
                 }
             )
