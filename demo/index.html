@@ -45,7 +45,11 @@
     </div>
     <script type="text/javascript" src="../NativeShare.js"></script>
     <script>
-        var nativeShare = new NativeShare()
+        var nativeShare = new NativeShare({
+            syncDescToTag: true,
+            syncTitleToTag: true,
+            syncIconToTag: true,
+        })
         var shareData = {
             title: 'NativeShare',
             desc: 'NativeShare是一个整合了各大移动端浏览器调用原生分享的插件',
