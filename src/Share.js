@@ -14,7 +14,7 @@ import {
 } from './utils'
 
 export default class Share {
-    _shareData = null
+    _shareData = {}
     _config = {
         syncDescToTag: false,
         syncIconToTag: false,
@@ -22,11 +22,7 @@ export default class Share {
     }
     constructor(config) {
         this.setConfig(config)
-        this.initShareData()
-    }
-
-    initShareData() {
-        this._shareData = {
+        this.setShareData({
             link: location.href,
             title: getTitleFromTitleTag(),
             desc: getContentFromDescTag(),
@@ -36,7 +32,7 @@ export default class Share {
             fail: noop,
             cancel: noop,
             trigger: noop,
-        }
+        })
     }
 
     getShareData() {

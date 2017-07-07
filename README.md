@@ -51,7 +51,12 @@ var nativeShare = new NativeShare({
         timestamp: '',
         nonceStr: '',
         signature: '',
-    }
+    },
+  	// 让你修改的分享的文案同步到标签里，比如title文案会同步到<title>标签中
+	// 这样可以让一些不支持分享的浏览器也能修改部分文案，默认都不会同步
+  	syncDescToTag: false,
+  	syncIconToTag: false,
+  	syncTitleToTag: false,
 })
 
 // 你也可以在setConfig方法中设置配置参数
@@ -63,6 +68,7 @@ nativeShare.setConfig({
         signature: '',
     }
 })
+
 
 // 设置分享文案
 nativeShare.setShareData({
