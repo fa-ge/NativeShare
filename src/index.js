@@ -46,5 +46,23 @@ if (isWechat) {
     NativeShare = Others
 }
 
+export {
+    Share,
+    QQMobileBrowser,
+    UCIosBrowser,
+    UCAndroidBrowser,
+    BaiduAndroidBrowser,
+    SogouIosBrowser,
+    Wechat,
+    Others,
+    QQIos,
+    QQAndroid,
+    QZone,
+    shareToQQ,
+    shareToQZone,
+    shareToWeibo4Web,
+    shareToQZone4Web,
+}
+
 window.NativeShare = NativeShare
 export default NativeShare
