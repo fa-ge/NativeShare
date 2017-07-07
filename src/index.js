@@ -28,7 +28,7 @@ if (isWechat) {
     NativeShare = Wechat
 } else if (isQQ && isIos) {
     NativeShare = QQIos
-} else if (isQQ && QQAndroid) {
+} else if (isQQ && isAndroid) {
     NativeShare = QQAndroid
 } else if (isQZone) {
     NativeShare = QZone
