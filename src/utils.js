@@ -115,6 +115,41 @@ function getHostnameFromUrl(url) {
     return a.hostname
 }
 
+const descTag = document.querySelector('meta[name=description]')
+const iconTag = document.querySelector('link[rel*=icon]')
+
+function getContentFromDescTag() {
+    return Object(descTag).content || ''
+}
+
+function getHrefFromIconTag() {
+    return Object(iconTag).href || `${location.protocol}//${location.hostname}/favicon.ico`
+}
+
+function getTitleFromTitleTag() {
+    return document.title
+}
+
+function setDescTagContent(content) {
+    if (descTag) {
+        descTag.content = content
+    } else {
+        document.head.insertAdjacentHTML('beforeend', `<meta name="description" content="${content}">`)
+    }
+}
+
+function setIconTagHref(href) {
+    if (iconTag) {
+        iconTag.href = href
+    } else {
+        document.head.insertAdjacentHTML('beforeend', `<link rel="shortcut icon" href="${href}">`)
+    }
+}
+
+function setTitleTagTitle(title) {
+    document.title = title
+}
+
 export {
     isWechat,
     isQQ,
@@ -132,4 +167,10 @@ export {
     generateQueryString,
     Base64,
     getHostnameFromUrl,
+    getContentFromDescTag,
+    getHrefFromIconTag,
+    getTitleFromTitleTag,
+    setDescTagContent,
+    setIconTagHref,
+    setTitleTagTitle,
 }

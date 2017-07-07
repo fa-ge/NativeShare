@@ -1,30 +1,36 @@
-import { noop, assign, openAppByScheme, generateQueryString, Base64, isIos } from './utils'
+import {
+    noop,
+    assign,
+    openAppByScheme,
+    generateQueryString,
+    Base64,
+    isIos,
+    getContentFromDescTag,
+    getHrefFromIconTag,
+    getTitleFromTitleTag,
+    setDescTagContent,
+    setIconTagHref,
+    setTitleTagTitle,
+} from './utils'
 
 export default class Share {
     _shareData = null
-    _config = {}
+    _config = {
+        syncDescToTag: false,
+        syncIconToTag: false,
+        syncTitleToTag: false,
+    }
     constructor(config) {
         this.setConfig(config)
         this.initShareData()
     }
 
     initShareData() {
-        const descTag = document.querySelector('meta[name=description]')
-        const iconTag = document.querySelector('link[rel*=icon]')
-        let desc = 'from https://github.com/fa-ge/NativeShare'
-        let icon = ''
-        if (descTag) {
-            desc = descTag.getAttribute('content')
-        }
-        if (iconTag) {
-            icon = iconTag.getAttribute('href')
-        }
-
         this._shareData = {
             link: location.href,
-            title: document.title,
-            desc,
-            icon,
+            title: getTitleFromTitleTag(),
+            desc: getContentFromDescTag(),
+            icon: getHrefFromIconTag(),
             from: '',
             success: noop,
             fail: noop,
@@ -39,6 +45,15 @@ export default class Share {
 
     setShareData(options = {}) {
         assign(this._shareData, options)
+        if (this._config.syncDescToTag) {
+            setDescTagContent(this._shareData.desc)
+        }
+        if (this._config.syncIconToTag) {
+            setIconTagHref(this._shareData.icon)
+        }
+        if (this._config.syncTitleToTag) {
+            setTitleTagTitle(this._shareData.title)
+        }
     }
 
     setConfig(config = {}) {
@@ -48,5 +63,4 @@ export default class Share {
     getConfig() {
         return assign({}, this._config)
     }
-
 }
