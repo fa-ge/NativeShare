@@ -46,7 +46,6 @@ export default class Wechat extends Share {
                 type: shareData.type,
                 dataUrl: shareData.dataUrl,
                 success: shareData.success,
-                cancel: shareData.cancel,
                 fail: shareData.fail,
             }
 

@@ -29,8 +29,6 @@ export default class QQIos extends Share {
                     function({ retCode }) {
                         if (retCode === 0) {
                             shareData.success.call(this)
-                        } else if (retCode === 1) {
-                            shareData.cancel.call(this)
                         } else {
                             shareData.fail.call(this)
                         }
