@@ -15,6 +15,7 @@ import QQMobileBrowser from './QQMobileBrowser'
 import UCIosBrowser from './UCIosBrowser'
 import UCAndroidBrowser from './UCAndroidBrowser'
 import BaiduAndroidBrowser from './BaiduAndroidBrowser'
+import BaiduIosBrowser from './BaiduIosBrowser'
 import SogouIosBrowser from './SogouIosBrowser'
 import Wechat from './Wechat'
 import Others from './Others'
@@ -40,6 +41,8 @@ if (isWechat) {
     NativeShare = UCAndroidBrowser
 } else if (isBaiduMBrowser && isAndroid) {
     NativeShare = BaiduAndroidBrowser
+} else if (isBaiduMBrowser && isIos) {
+    NativeShare = BaiduIosBrowser
 } else if (isSogouMBrowser && isIos) {
     NativeShare = SogouIosBrowser
 } else {
@@ -52,6 +55,7 @@ export {
     UCIosBrowser,
     UCAndroidBrowser,
     BaiduAndroidBrowser,
+    BaiduIosBrowser,
     SogouIosBrowser,
     Wechat,
     Others,
