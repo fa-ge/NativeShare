@@ -15,7 +15,7 @@ export default class QQIos extends Share {
     init() {
         loadJs('https://open.mobile.qq.com/sdk/qqapi.js', () => {
             const shareData = this._shareData
-            mqq.ui.setOnShareHandler(function(type) {
+            mqq.ui.setOnShareHandler(type => {
                 mqq.ui.shareMessage(
                     {
                         back: true,
@@ -26,11 +26,11 @@ export default class QQIos extends Share {
                         image_url: shareData.icon,
                         sourceName: shareData.from,
                     },
-                    function({ retCode }) {
-                        if (retCode === 0) {
-                            shareData.success.call(this)
+                    data => {
+                        if (data.retCode === 0) {
+                            shareData.success(data)
                         } else {
-                            shareData.fail.call(this)
+                            shareData.fail(data)
                         }
                     }
                 )
