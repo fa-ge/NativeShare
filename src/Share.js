@@ -5,34 +5,22 @@ import {
     generateQueryString,
     Base64,
     isIos,
-    getContentFromDescTag,
-    getHrefFromIconTag,
-    getTitleFromTitleTag,
     setDescTagContent,
     setIconTagHref,
     setTitleTagTitle,
 } from './utils'
+import shareData from './shareData'
 
 export default class Share {
-    _shareData = {}
+    _shareData = shareData
     _config = {
         syncDescToTag: false,
         syncIconToTag: false,
         syncTitleToTag: false,
     }
+    
     constructor(config) {
         this.setConfig(config)
-        this.setShareData({
-            link: location.href,
-            title: getTitleFromTitleTag(),
-            desc: getContentFromDescTag(),
-            icon: getHrefFromIconTag(),
-            from: '',
-            success: noop,
-            fail: noop,
-            cancel: noop,
-            trigger: noop,
-        })
     }
 
     getShareData() {

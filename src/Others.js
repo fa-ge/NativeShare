@@ -9,17 +9,16 @@ export default class Others extends Share {
 
     call(command = 'default', options) {
         this.setShareData(options)
-        const shareData = this.getShareData()
-        
+
         command = String(command).toLowerCase()
 
         if (command === weibo) {
-            shareToWeibo4Web(shareData)
+            shareToWeibo4Web()
         } else {
             if (command === qqFriend) {
-                shareToQQ(shareData)
+                shareToQQ()
             } else if (command === qZone) {
-                shareToQZone(shareData)
+                shareToQZone()
             }
 
             throw new Error(`the browser may not support command ${command}!`)
