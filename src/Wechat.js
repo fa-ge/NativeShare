@@ -47,6 +47,7 @@ export default class Wechat extends Share {
                 dataUrl: shareData.dataUrl,
                 success: shareData.success,
                 fail: shareData.fail,
+                cancel: shareData.fail,
             }
 
             Object.defineProperty(wxShareData, 'trigger', {
