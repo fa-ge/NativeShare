@@ -38,23 +38,23 @@ export default class Wechat extends Share {
             )
 
             const shareData = this._shareData
-            const wxShareData = {
-                title: shareData.title,
-                desc: shareData.desc,
-                link: shareData.link,
-                imgUrl: shareData.icon,
-                type: shareData.type,
-                dataUrl: shareData.dataUrl,
-                success: shareData.success,
-                fail: shareData.fail,
-                cancel: shareData.fail,
-            }
+            const wxShareData = {}
 
             Object.defineProperty(wxShareData, 'trigger', {
                 get() {
                     return (...args) => {
+                        assign(wxShareData, {
+                            title: shareData.title,
+                            desc: shareData.desc,
+                            link: shareData.link,
+                            imgUrl: shareData.icon,
+                            type: shareData.type,
+                            dataUrl: shareData.dataUrl,
+                            success: shareData.success,
+                            fail: shareData.fail,
+                            cancel: shareData.fail,
+                        })
                         shareData.trigger(...args)
-                        assign(wxShareData, shareData)
                     }
                 },
                 set(newValue) {
@@ -72,5 +72,4 @@ export default class Wechat extends Share {
             })
         })
     }
-
 }
