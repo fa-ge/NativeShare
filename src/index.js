@@ -10,6 +10,7 @@ import {
     isQZone,
     isSogouMBrowser,
     isBaiduApp,
+    isAlipay
 } from './utils'
 import Share from './Share'
 import QQMobileBrowser from './QQMobileBrowser'
@@ -25,6 +26,7 @@ import QQAndroid from './QQAndroid'
 import QZone from './QZone'
 import BaiduIos from './BaiduIos'
 import BaiduAndroid from './BaiduAndroid'
+import Alipay from './Alipay'
 
 let NativeShare
 
@@ -52,6 +54,8 @@ if (isWechat) {
     NativeShare = BaiduIos
 } else if (isBaiduApp && isAndroid) {
     NativeShare = BaiduAndroid
+} else if (isAlipay) {
+    NativeShare = Alipay
 } else {
     NativeShare = Others
 }
@@ -67,6 +71,7 @@ export {
     BaiduIos,
     BaiduAndroid,
     Wechat,
+    Alipay,
     Others,
     QQIos,
     QQAndroid,

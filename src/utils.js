@@ -13,6 +13,7 @@ const isUCMBrowser = /UCBrowser/i.test(UA)
 const isBaiduMBrowser = /mobile.*baidubrowser/i.test(UA)
 const isSogouMBrowser = /SogouMobileBrowser/i.test(UA)
 const isBaiduApp = /baiduboxapp/i.test(UA)
+const isAlipay = /alipay/i.test(UA)
 
 function noop() {}
 
@@ -162,6 +163,7 @@ export {
     isBaiduMBrowser,
     isSogouMBrowser,
     isBaiduApp,
+    isAlipay,
     loadJs,
     noop,
     assign,
