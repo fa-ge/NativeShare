@@ -19,9 +19,9 @@ export default class Others extends Share {
                 shareToQQ()
             } else if (command === qZone) {
                 shareToQZone()
+            } else {
+                throw new Error(`the browser may not support command ${command}!`)
             }
-
-            throw new Error(`the browser may not support command ${command}!`)
         }
     }
 }
