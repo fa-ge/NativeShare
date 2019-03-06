@@ -20,17 +20,14 @@ export default class Wechat extends Share {
         if (!config) {
             return
         }
-        loadJs('https://res.wx.qq.com/open/js/jweixin-1.2.0.js', () => {
+        loadJs('https://res.wx.qq.com/open/js/jweixin-1.4.0.js', () => {
             wx.config(
                 assign(
                     {
                         debug: false,
                         jsApiList: [
-                            'onMenuShareTimeline',
-                            'onMenuShareAppMessage',
-                            'onMenuShareQQ',
-                            'onMenuShareWeibo',
-                            'onMenuShareQZone',
+                            'updateAppMessageShareData',
+                            'updateTimelineShareData',
                         ],
                     },
                     config
@@ -48,8 +45,6 @@ export default class Wechat extends Share {
                             desc: shareData.desc,
                             link: shareData.link,
                             imgUrl: shareData.icon,
-                            type: shareData.type,
-                            dataUrl: shareData.dataUrl,
                             success: shareData.success,
                             fail: shareData.fail,
                             cancel: shareData.fail,
@@ -64,11 +59,8 @@ export default class Wechat extends Share {
             })
 
             wx.ready(() => {
-                wx.onMenuShareAppMessage(wxShareData)
-                wx.onMenuShareQQ(wxShareData)
-                wx.onMenuShareQZone(wxShareData)
-                wx.onMenuShareWeibo(wxShareData)
-                wx.onMenuShareTimeline(wxShareData)
+                wx.updateAppMessageShareData(wxShareData)
+                wx.updateTimelineShareData(wxShareData)
             })
         })
     }
