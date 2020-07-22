@@ -9,7 +9,6 @@ import {
     isQQ,
     isQZone,
     isSogouMBrowser,
-    isBaiduApp,
 } from './utils'
 import Share from './Share'
 import QQMobileBrowser from './QQMobileBrowser'
@@ -23,8 +22,6 @@ import Others from './Others'
 import QQIos from './QQIos'
 import QQAndroid from './QQAndroid'
 import QZone from './QZone'
-import BaiduIos from './BaiduIos'
-import BaiduAndroid from './BaiduAndroid'
 
 let NativeShare
 
@@ -48,10 +45,6 @@ if (isWechat) {
     NativeShare = BaiduIosBrowser
 } else if (isSogouMBrowser && isIos) {
     NativeShare = SogouIosBrowser
-} else if (isBaiduApp && isIos) {
-    NativeShare = BaiduIos
-} else if (isBaiduApp && isAndroid) {
-    NativeShare = BaiduAndroid
 } else {
     NativeShare = Others
 }
@@ -64,8 +57,6 @@ export {
     BaiduAndroidBrowser,
     BaiduIosBrowser,
     SogouIosBrowser,
-    BaiduIos,
-    BaiduAndroid,
     Wechat,
     Others,
     QQIos,
