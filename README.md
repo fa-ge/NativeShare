@@ -15,10 +15,9 @@
 - QQ自带浏览器
 - QQ空间APP
 - 百度浏览器
-- 百度APP自带浏览器
 - ios 搜狗浏览器
 - 支持分享到web微博
-- 即将支持(android 搜狗浏览器，微博APP）
+- 支持safari,chome浏览器
 
 存在的问题
 
