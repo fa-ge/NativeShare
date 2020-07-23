@@ -36,6 +36,9 @@
 
 ![demo](https://fa-ge.github.io/NativeShare/demo/demo.png)
 
+### npm包安装
+npm install --save nativeshare
+
 ### 使用
 支持ES6模块,AMD，CMD引入
 如果你的项目没有模块化。你也可以直接用script标签引入NativeShare.js。可以参考[demo](https://fa-ge.github.io/NativeShare/demo/index.html)
