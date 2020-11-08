@@ -17,7 +17,7 @@
 - 百度浏览器
 - ios 搜狗浏览器
 - 支持分享到web微博
-- 支持safari,chome浏览器
+- 支持safari,chome浏览器(页面地址必须是https)
 
 存在的问题
 
