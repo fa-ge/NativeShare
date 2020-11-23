@@ -26,6 +26,11 @@ export default class Wechat extends Share {
                     {
                         debug: false,
                         jsApiList: [
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareWeibo',
+                            'onMenuShareQZone',
                             'updateAppMessageShareData',
                             'updateTimelineShareData',
                         ],
@@ -59,6 +64,11 @@ export default class Wechat extends Share {
             })
 
             wx.ready(() => {
+                wx.onMenuShareAppMessage(wxShareData)
+                wx.onMenuShareQQ(wxShareData)
+                wx.onMenuShareQZone(wxShareData)
+                wx.onMenuShareWeibo(wxShareData)
+                wx.onMenuShareTimeline(wxShareData)
                 wx.updateAppMessageShareData(wxShareData)
                 wx.updateTimelineShareData(wxShareData)
             })
